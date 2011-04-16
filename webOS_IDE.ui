@@ -4,6 +4,8 @@
   <object class="GtkTreeStore" id="treestore"/>
   <object class="GtkWindow" id="window">
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">webOS IDE</property>
+    <property name="icon_name">applications-development</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -324,14 +326,7 @@
                 <property name="scrollable">True</property>
                 <child>
                   <object class="GtkScrolledWindow" id="scrolledwindow1">
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
-                    <child>
-                      <object class="GtkSourceView" id="source_view">
-                        <property name="indent_width">-1</property>
-                        <property name="tab_width">2</property>
-                      </object>
-                    </child>
+                    <property name="can_focus">False</property>
                   </object>
                 </child>
                 <child type="tab">
