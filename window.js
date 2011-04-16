@@ -1,12 +1,21 @@
-(function wrap() {
-
 var Gtk = imports.gi.Gtk,
     GtkSource = imports.gi.GtkSource,
+    Gio = imports.gi.Gio,
     Pango = imports.gi.Pango;
 
-
-
 Gtk.init(null, null);
+
+var current_filename;
+function load_file(filename) {
+
+  current_filename = filename;
+  window.title = "webOS IDE - " + filename;
+
+  var file = Gio.file_new_for_path(filename);
+  source_buf.text = file.read().get_contents();
+
+}
+
 
 var source_lang_mgr = new GtkSource.LanguageManager();
 var style_scheme_mgr = new GtkSource.StyleSchemeManager();
@@ -38,12 +47,12 @@ var source_view = new GtkSource.View({
 ui.get_object("scrolledwindow1").add(source_view);
 
 
-source_buf.text = wrap.toString();
 source_view.set_buffer(source_buf);
-source_view.modify_font(Pango.font_description_from_string("monospace 12"));
+source_view.modify_font(Pango.font_description_from_string("monospace 11"));
 
-window.resize(800, 600);
+load_file("window.js");
+
+window.resize(1024, 600);
 window.show_all();
 Gtk.main();
 
-}());
