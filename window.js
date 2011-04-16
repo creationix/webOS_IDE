@@ -23,6 +23,7 @@ var styleSchemeMgr = new GtkSource.StyleSchemeManager();
 var ui = new Gtk.Builder();
 ui.add_from_file("webOS_IDE.ui");
 var window = ui.get_object("window");
+var treeStore = ui.get_object("treestore");
 
 var sourceBuf = new GtkSource.Buffer({
   highlight_matching_brackets: true,
