@@ -12,6 +12,8 @@
   mainWindow.resize(1024, 600);
   mainWindow.show_all();
 
+  mainWindow.loadDir("app");
+
   readdir('app').forEach(function (name) {
     mainWindow.loadFile("app/" + name);
   });

@@ -19,6 +19,9 @@ var MainWindow = (function () {
     this.loadFile = function (path) {
       codeNotebook.loadFile(path);
     };
+    this.loadDir = function (path) {
+      fileTree.loadDir(path);
+    }
     
     // Implementation
     this.set_title("webOS IDE");

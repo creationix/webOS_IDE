@@ -5,7 +5,6 @@ var FileTree = (function () {
       Gio = imports.gi.Gio,
       GObject = imports.gi.GObject;
 
-
   function init() {
 
     // Private
@@ -13,10 +12,19 @@ var FileTree = (function () {
     var column = new Gtk.TreeViewColumn();
     var model = new Gtk.TreeStore();
     var cellRenderer = new Gtk.CellRendererText();
+    var row = {};
     
     // Public
     
+    this.loadDir = function (path) {
+      var files = readdir(path);
+      for (var i = 0, l = files.length; i < l; i++) {
+        model.append(row);
+        model.set_value(row.iter, 0, files[i]);
+      }
+    };
     
+
     // Implementation
     model.set_column_types(1, [GObject.TYPE_STRING]);
     treeView.set_model(model);
@@ -26,9 +34,6 @@ var FileTree = (function () {
     this.add(treeView);
 
 ///////////////////////////////////
-    var row = {};
-    model.append(row);
-    model.set_value(row.iter, 0, "Hello");
 
   }
   
