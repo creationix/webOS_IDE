@@ -1,4 +1,7 @@
-(function () {
+// Some nice utility functions
+exports.dump = function dump(obj) { print(realDump(obj, "")); }
+exports.dir = function dir(obj) { print(realDir(obj, "", [])); }
+exports.readdir = readdir;
 
 function stringifyDescriptor(descriptor) {
   if (descriptor.get) {
@@ -95,11 +98,7 @@ function realDir(obj, indent, refs) {
   return "{\n" + newIndent + lines.join(",\n" + newIndent) + "\n" + indent + "}";
 }
 
-
-this.dump = function dump(obj) { print(realDump(obj, "")); }
-this.dir = function dir(obj) { print(realDir(obj, "", [])); }
-
-this.readdir = function readdir(path) {
+function readdir(path) {
   var directory = imports.gi.Gio.file_new_for_path(path);
   var enumerator = directory.enumerate_children(imports.gi.Gio.FILE_ATTRIBUTE_STANDARD_NAME, 0);
   var file_info;
@@ -110,4 +109,3 @@ this.readdir = function readdir(path) {
   return result;
 }
 
-}());

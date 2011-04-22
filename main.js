@@ -1,9 +1,10 @@
+Seed.include("lib/require.js");
 
-(function () {
+(function main() {
 
   var Gtk = imports.gi.Gtk;
-  Seed.include("lib/utils.js");
-  Seed.include("app/MainWindow.js");
+  var MainWindow = require("MainWindow"),
+      utils = require("utils");
 
   Gtk.init(null, null);
 
@@ -14,7 +15,7 @@
 
   mainWindow.loadDir("app");
 
-  readdir('app').forEach(function (name) {
+  utils.readdir('app').forEach(function (name) {
     mainWindow.loadFile("app/" + name);
   });
 
