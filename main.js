@@ -12,7 +12,9 @@
   mainWindow.resize(1024, 600);
   mainWindow.show_all();
 
-  mainWindow.loadFile("main.js");
+  readdir('app').forEach(function (name) {
+    mainWindow.loadFile("app/" + name);
+  });
 
 
   Gtk.main();

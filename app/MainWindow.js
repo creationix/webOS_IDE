@@ -1,7 +1,7 @@
 var MainWindow = (function () {
 
   var Gtk = imports.gi.Gtk;
-  Seed.include("app/CodeEditor.js");
+  Seed.include("app/CodeNotebook.js");
   Seed.include("app/FileTree.js");
 
   function init() {
@@ -11,20 +11,20 @@ var MainWindow = (function () {
     var vbox = new Gtk.VBox();
     var hPaned = new Gtk.HPaned();
     var statusBar = new Gtk.Statusbar();
-    var codeEditor = new CodeEditor();
+    var codeNotebook = new CodeNotebook();
     var fileTree = new FileTree();
     
     // Public
     
     this.loadFile = function (path) {
-      codeEditor.loadFile(path);
+      codeNotebook.loadFile(path);
     };
     
     // Implementation
     this.set_title("webOS IDE");
     vbox.pack_start(hPaned, true, true);
     hPaned.add1(fileTree);
-    hPaned.add2(codeEditor);
+    hPaned.add2(codeNotebook);
     hPaned.set_position(260);
     vbox.pack_start(statusBar);
     this.add(vbox);

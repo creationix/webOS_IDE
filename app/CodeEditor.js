@@ -18,6 +18,7 @@ var CodeEditor = (function () {
     // Public
     
     this.loadFile = function (path) {
+      print("Loading file: " + path);
       sourceBuffer.text = Gio.simple_read(path);
     };
     
