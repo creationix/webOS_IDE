@@ -1,3 +1,4 @@
+#!/usr/bin/env seed
 Seed.include("lib/require.js");
 
 (function main() {
@@ -18,7 +19,6 @@ Seed.include("lib/require.js");
   utils.readdir('app').forEach(function (name) {
     mainWindow.loadFile("app/" + name);
   });
-
 
   Gtk.main();
 
